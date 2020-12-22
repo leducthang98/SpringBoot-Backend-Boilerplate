@@ -13,4 +13,8 @@ public class DefaultController {
         return "ok";
     }
 
+    @GetMapping("admin-only")
+    public String adminOnly() {
+        return "admin only";
+    }
 }

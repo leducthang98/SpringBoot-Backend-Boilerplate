@@ -7,14 +7,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 public class BaseController {
-    private String userId = null;
+    private Long userId = null;
 
     @ModelAttribute("BeforeRequest")
     public void BeforeRequest(HttpServletRequest request, HttpServletResponse response) {
-        this.userId = (String) request.getSession().getAttribute("userId");
+        this.userId = (Long) request.getSession().getAttribute("userId");
     }
 
-    public String getUserId() {
+    public Long getUserId() {
         return userId;
     }
 }

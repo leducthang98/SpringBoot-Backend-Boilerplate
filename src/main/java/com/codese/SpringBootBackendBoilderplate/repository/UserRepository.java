@@ -25,4 +25,9 @@ public class UserRepository {
         return jdbcTemplate.queryForObject(sql, new UserMapper(), new Object[]{username});
     }
 
+    public User getUserById(Long userId) {
+        System.out.println("get user by userid");
+        String sql = "Select * from account where id = ?";
+        return jdbcTemplate.queryForObject(sql, new UserMapper(), new Object[]{userId});
+    }
 }
