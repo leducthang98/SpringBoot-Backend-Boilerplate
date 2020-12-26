@@ -37,7 +37,8 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
             System.out.println("Filter");
             String jwt = getJwtFromRequest(request);
             if (StringUtils.hasText(jwt) && tokenProvider.validateToken(jwt)) {
-                // Không lưu role vào token, mà mỗi lần lấy token => query để lấy role (Chắc là sẽ cache)
+                // Cách làm này không lưu role vào token, mà mỗi lần lấy token => query để lấy role (Cache lại)
+                // Có thể lưu role vào cũng được tuỳ theo phong cách mỗi người
                 Long userId = tokenProvider.getUserIdFromJWT(jwt);
                 request.getSession().setAttribute("userId", userId);
                 UserDetails userDetails = customUserDetailsService.loadUserById(userId);

@@ -16,7 +16,6 @@ public class UserServiceImpl implements IUserService {
 
     @Override
     public List<User> getAllUser() {
-        System.out.println("JPA");
         return userRepository.findAll();
     }
 
