@@ -1,8 +1,8 @@
-package com.codese.SpringBootBackendBoilderplate.service.impl;
+package com.codese.SpringBootBackendBoilderplate.service.implementation;
 
 import com.codese.SpringBootBackendBoilderplate.model.User;
-import com.codese.SpringBootBackendBoilderplate.repository.UserRepository;
-import com.codese.SpringBootBackendBoilderplate.service.interf.IUserService;
+import com.codese.SpringBootBackendBoilderplate.repository.interfaces.IUserRepository;
+import com.codese.SpringBootBackendBoilderplate.service.interfaces.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,15 +12,16 @@ import java.util.List;
 public class UserServiceImpl implements IUserService {
 
     @Autowired
-    UserRepository userRepository;
+    IUserRepository userRepository;
 
     @Override
     public List<User> getAllUser() {
-        return userRepository.getAllUser();
+        System.out.println("JPA");
+        return userRepository.findAll();
     }
 
     @Override
     public User getUserByUserName(String username) {
-        return userRepository.getUserByUserName(username);
+        return userRepository.findByUsername(username);
     }
 }

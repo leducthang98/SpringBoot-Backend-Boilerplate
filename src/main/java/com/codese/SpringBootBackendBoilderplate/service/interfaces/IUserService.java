@@ -1,4 +1,4 @@
-package com.codese.SpringBootBackendBoilderplate.service.interf;
+package com.codese.SpringBootBackendBoilderplate.service.interfaces;
 
 import com.codese.SpringBootBackendBoilderplate.model.User;
 

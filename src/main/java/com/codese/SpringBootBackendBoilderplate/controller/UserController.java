@@ -2,7 +2,8 @@ package com.codese.SpringBootBackendBoilderplate.controller;
 
 import com.codese.SpringBootBackendBoilderplate.helper.ResponseBuilder;
 import com.codese.SpringBootBackendBoilderplate.model.User;
-import com.codese.SpringBootBackendBoilderplate.service.impl.UserServiceImpl;
+import com.codese.SpringBootBackendBoilderplate.service.implementation.UserServiceImpl;
+import com.codese.SpringBootBackendBoilderplate.service.interfaces.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,7 +17,7 @@ import java.util.List;
 @RequestMapping("/user")
 public class UserController extends BaseController {
     @Autowired
-    UserServiceImpl userService;
+    IUserService userService;
 
     @GetMapping("/all")
     public ResponseEntity<ResponseBuilder<List<User>>> getAllUser() {
