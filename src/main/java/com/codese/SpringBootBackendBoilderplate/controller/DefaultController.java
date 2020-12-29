@@ -41,4 +41,5 @@ public class DefaultController {
         template.opsForValue().set("UserArrayTest", users);
         return (List<User>) template.opsForValue().get("UserArrayTest");
     }
+
 }
