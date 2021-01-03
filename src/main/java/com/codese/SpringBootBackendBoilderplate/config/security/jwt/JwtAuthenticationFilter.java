@@ -52,16 +52,9 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
                     SecurityContextHolder.getContext().setAuthentication(authentication);
                 }
             } else {
-                System.out.println("All in else, but only allowed passes the exception");
+                System.out.println("Error, only allowed paths pass the filter");
             }
         } catch (Exception ex) {
-            JSONObject json = new JSONObject();
-            json.put("code", Error.TOKEN_INVALID.getCode());
-            json.put("message", Error.TOKEN_INVALID.getMessage());
-            response.setCharacterEncoding("UTF-8");
-            response.setContentType(MediaType.APPLICATION_JSON.getType());
-            response.getWriter().print(json);
-            response.getWriter().flush();
             return;
         }
         filterChain.doFilter(request, response);

@@ -22,6 +22,7 @@ public class CustomUserDetail implements UserDetails {
     public Collection<? extends GrantedAuthority> getAuthorities() {
         // vẫn đang fix cứng, sẽ làm tối ưu authorization sau
         // role prefix phải là ROLE_
+        System.out.println("user detail:" + user.toString());
         Collection<SimpleGrantedAuthority> roles = new ArrayList<>();
         roles.add(new SimpleGrantedAuthority("ROLE_USER"));
         roles.add(new SimpleGrantedAuthority("ROLE_ADMIN"));
@@ -42,6 +43,7 @@ public class CustomUserDetail implements UserDetails {
     public boolean isAccountNonExpired() {
         return true;
     }
+
     @Override
     public boolean isAccountNonLocked() {
         return true;

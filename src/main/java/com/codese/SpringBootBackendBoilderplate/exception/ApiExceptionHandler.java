@@ -2,6 +2,7 @@ package com.codese.SpringBootBackendBoilderplate.exception;
 
 import com.codese.SpringBootBackendBoilderplate.constant.Error;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.web.bind.MissingServletRequestParameterException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -21,6 +22,12 @@ public class ApiExceptionHandler {
     @ResponseStatus(value = HttpStatus.BAD_REQUEST)
     public ErrorMessage ApiException(ApiException ex, WebRequest request) {
         return new ErrorMessage(Error.UNKNOWN.getCode(), ex.getMessage());
+    }
+
+    @ExceptionHandler(BadCredentialsException.class)
+    @ResponseStatus(value = HttpStatus.BAD_REQUEST)
+    public ErrorMessage BadCredentialsException(Exception ex, WebRequest request) {
+        return new ErrorMessage(Error.INVALID_USERNAME_OR_PASSWORD.getCode(), Error.INVALID_USERNAME_OR_PASSWORD.getMessage());
     }
 
     @ExceptionHandler(InterruptedException.class)

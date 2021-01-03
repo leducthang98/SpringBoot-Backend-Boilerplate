@@ -28,6 +28,13 @@ public class AuthController {
 
     @PostMapping("/login")
     public ResponseEntity<ResponseBuilder<JwtAuthenticationResponse>> authenticateUser(@RequestBody JwtAuthenticationRequest request) {
+        // Authentication sẽ lấy user từ username người dùng truyền vào từ hàm loadUserByUserName() (config trong WebSecurityConfig)
+
+        // loadUserByUserName() trả về 1 đối tượng là customUserDetail
+        // Class CustomUserDetail là 1 class implement userDetail, mình đã map username và password vào hàm get rồi
+
+        // >> đó là lý do tại sao 4 dòng dưới nó tự check được password người dùng và trong database
+        // (so sánh password từ request và password từ customUserDetail)
         Authentication authentication = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(
                         request.getUsername(),
