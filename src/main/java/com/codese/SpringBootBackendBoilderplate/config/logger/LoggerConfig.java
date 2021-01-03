@@ -7,12 +7,12 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class LoggerConfig {
     @Bean
-    public FilterRegistrationBean<Logger> loggingFilter(){
-        FilterRegistrationBean<Logger> registrationBean
+    public FilterRegistrationBean<LogSystem> loggingFilter() {
+        FilterRegistrationBean<LogSystem> registrationBean
                 = new FilterRegistrationBean<>();
-        registrationBean.setFilter(new Logger());
+        registrationBean.setFilter(new LogSystem());
         registrationBean.setOrder(1);
-        registrationBean.addUrlPatterns("/**");
+        registrationBean.addUrlPatterns("/*");
         return registrationBean;
     }
 }
