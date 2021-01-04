@@ -22,8 +22,9 @@ app.setting.redis.port=6379
 
 #custom properties
 app.setting.jwt-secret=thangdeptrai
-<<
+
 ------------------------
+>>
 
 ## Import default.sql
 
