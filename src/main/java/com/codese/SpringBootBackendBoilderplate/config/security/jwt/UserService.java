@@ -18,6 +18,7 @@ public class UserService implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String username) {
         // chuẩn thì sẽ là UserWithRole
+        // nên được cache lại
         User user = userRepository.findByUsername(username);
         if (user == null) {
             throw new UsernameNotFoundException(username);
@@ -25,8 +26,9 @@ public class UserService implements UserDetailsService {
         return new CustomUserDetail(user);
     }
 
-    public UserDetails loadUserById(Long userId) throws Exception {
+    public CustomUserDetail loadUserById(String userId) throws Exception {
         // chuẩn thì sẽ là UserWithRole
+        // nên được cache lại
         User user = userRepository.findOneById(userId);
         if (user == null) {
             throw new Exception(Error.TOKEN_INVALID.getMessage());

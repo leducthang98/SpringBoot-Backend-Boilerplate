@@ -8,10 +8,10 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface IUserRepository extends JpaRepository<User, Long> {
+public interface IUserRepository extends JpaRepository<User, String> {
 
     User findByUsername(String username);
 
     @Query(value = "Select * from account where id = ?1", nativeQuery = true)
-    User findOneById(Long userId);
+    User findOneById(String userId);
 }

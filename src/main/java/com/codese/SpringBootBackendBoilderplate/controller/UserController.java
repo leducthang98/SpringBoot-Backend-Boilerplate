@@ -21,11 +21,11 @@ public class UserController extends BaseController {
 
     @GetMapping("/all")
     public ResponseEntity<ResponseBuilder<List<User>>> getAllUser() {
-        System.out.println("userId:" + this.getUserId());
+        System.out.println("user detail at controller:" + this.getUserId());
         return ResponseEntity.ok(ResponseBuilder.buildResponse(userService.getAllUser()));
     }
 
-    @GetMapping("/get-user-by-username")
+    @GetMapping("/get-by-username")
     public ResponseEntity<ResponseBuilder<User>> getUserByUserName(@RequestParam(required = true) String username) {
         return ResponseEntity.ok(ResponseBuilder.buildCustomResponse(userService.getUserByUserName(username), 200, "ok"));
     }

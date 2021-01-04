@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 @RestController
 @RequestMapping("/")
@@ -27,13 +28,13 @@ public class DefaultController {
         return "admin only";
     }
 
-    @GetMapping("redis-set-demo")
-    public List<User> setRedisDemo(@RequestParam String redisValue) {
+    @GetMapping("redis-check")
+    public List<User> setRedisDemo(@RequestParam(required = false,defaultValue = "Lê Đức Thắng") String redisValue) {
         // users must be Serializable
         ArrayList<User> users = new ArrayList<>();
         User user = new User();
-
-        user.setId(-1);
+        UUID id = UUID.randomUUID();
+        user.setId(id.toString());
         user.setUsername(redisValue);
         user.setPassword("redisTestPass");
         users.add(user);
