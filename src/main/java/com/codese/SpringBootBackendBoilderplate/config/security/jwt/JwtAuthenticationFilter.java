@@ -54,7 +54,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
                 System.out.println("Error, only allowed paths pass the filter");
             }
         } catch (Exception ex) {
-            return;
+            // return;
         }
         filterChain.doFilter(request, response);
 
