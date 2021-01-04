@@ -2,8 +2,10 @@
 
 ## Add your configuration in application.properties, example:
 
-server.port = 8081
 ------------------------
+>>
+server.port = 8081
+
 #datasource
 spring.datasource.url=jdbc:mysql://localhost:3306/default
 spring.datasource.username=root
@@ -20,6 +22,7 @@ app.setting.redis.port=6379
 
 #custom properties
 app.setting.jwt-secret=thangdeptrai
+<<
 ------------------------
 
 ## Import default.sql
